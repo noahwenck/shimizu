@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, Response
-import netflixScraper
+import netflix_scraper
 
 # NOTE: THIS WILL BE REDONE AT SOME POINT
 
@@ -14,7 +14,7 @@ def netflix():
     """
     Endpoint to get the films expiring from Netflix.
     """
-    expiring_films = netflixScraper.extract_expiring_netflix()
+    expiring_films = netflix_scraper.extract_expiring_netflix()
     return jsonify([film.to_dict() for film in expiring_films])
 
 
