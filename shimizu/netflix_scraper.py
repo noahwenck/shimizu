@@ -3,7 +3,6 @@ from datetime import datetime
 from film import Film
 import requests
 
-
 NETFLIX_URL = "https://www.netflix.com/tudum/articles/whats-leaving-netflix"
 DATE_HEADER_CLASS = "css-1i31ble"
 DATA_DIV_CLASSES = ["css-15bwy6z", "eohwfup4"]
@@ -35,7 +34,7 @@ def extract_expiring_netflix():
 
                 film_year = filtered_data[2] if len(filtered_data) > 2 else None
 
-                film = Film(film_title, film_year, current_expiration_date)
+                film = Film(film_title, film_year, current_expiration_date, "NETFLIX")
                 expiring_films.append(film)
 
     return expiring_films

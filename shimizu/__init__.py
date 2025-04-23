@@ -1,9 +1,12 @@
-from flask import Flask, jsonify, Response
-import netflix_scraper
-
-# NOTE: THIS WILL BE REDONE AT SOME POINT
+from flask import Flask, jsonify, Response, redirect
+from shimizu import netflix_scraper
 
 app = Flask(__name__)
+# todo: Add logging + log file
+
+@app.route('/')
+def index():
+    return redirect('/ping')
 
 @app.route('/ping')
 def hello_world():
@@ -16,7 +19,3 @@ def netflix():
     """
     expiring_films = netflix_scraper.extract_expiring_netflix()
     return jsonify([film.to_dict() for film in expiring_films])
-
-
-if __name__ == '__main__':
-    app.run()
